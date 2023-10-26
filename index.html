@@ -11,26 +11,44 @@
       src="https://unpkg.com/htmx.org@1.9.6"
       integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
       crossorigin="anonymous"></script>
+    <style>
+      pre {
+        user-select: all;
+      }
+      form {
+        max-width: 100%;
+      }
+      textarea {
+        height: auto;
+      }
+      code,
+      textarea {
+        font-family: monospace;
+        font-size: 1rem;
+      }
+    </style>
   </head>
   <body>
     <header>
       <h1>Vue tests generator</h1>
     </header>
     <main>
-      <section>
-        <h2>Your component</h2>
-        <form hx-post="/api/gpt" hx-target="#output" hx-indicator="#loading">
-          <textarea name="component"></textarea>
-          <button type="submit">Generate tests</button>
-        </form>
-      </section>
-      <div id="loading" class="htmx-indicator">
-        Please wait, tests are generated
-      </div>
-      <section>
-        <h2>Result</h2>
-        <pre><code id="output" /></pre>
-      </section>
+      <article>
+        <section>
+          <h2>Your component</h2>
+          <form hx-post="/api/gpt" hx-target="#output" hx-indicator="#loading">
+            <textarea name="component" rows="25"></textarea>
+            <button type="submit">Generate tests</button>
+          </form>
+        </section>
+        <div id="loading" class="htmx-indicator">
+          Please wait, tests are generated
+        </div>
+        <section>
+          <h2>Result</h2>
+          <pre><code id="output" /></pre>
+        </section>
+      </article>
     </main>
     <footer>
       <a class="https://github.com/brachkow/vue-tests-gpt">GitHub</a>
